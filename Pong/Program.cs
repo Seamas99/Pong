@@ -53,8 +53,37 @@
                     Console.SetCursorPosition(tennisCourtLength - 1, i + 1 + rightRacketPosition); //right racket
                     Console.WriteLine(racket);
                 } // end of racket print loop
+                ConsoleKey buttonPressed;
+                buttonPressed = Console.ReadKey().Key;
+                if (buttonPressed.Equals(leftUp))
+                {
+                    if (leftRacketPosition > 0)
+                    {
+                        leftRacketPosition--;
+                    }
+                } 
+                else if(buttonPressed.Equals(leftDown))
+                {
+                    if (leftRacketPosition < tennisCourtWidth - racketSize -1)
+                    {
+                        leftRacketPosition++;
+                    }
+                }
+                if (buttonPressed.Equals(rightUp))
+                {
+                    if (rightRacketPosition > 0)
+                    {
+                        rightRacketPosition--;
+                    }
+                }
+                else if (buttonPressed.Equals(rightDown))
+                {
+                    if (rightRacketPosition < tennisCourtWidth - racketSize - 1)
+                    {
+                        rightRacketPosition++;
+                    }
+                }
 
-                
             }//end of game loop
         }
     }
