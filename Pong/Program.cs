@@ -42,6 +42,8 @@
             int ballXCoord = tennisCourtLength / 2;
             int ballYCoord = tennisCourtWidth / 2;
             char ball = '°';
+            bool isBallGoingDown = true;
+            bool isBallGoingRight = true;
             while (true)
             {
                 Console.SetCursorPosition(0, 0); //top outline
@@ -51,8 +53,6 @@
 
                 Console.SetCursorPosition(ballXCoord, ballYCoord);
                 Console.WriteLine(ball);
-                bool isBallGoingDown = true;
-                bool isBallGoingRight = true;
                 while (!Console.KeyAvailable)
                 {
                     for (int i = 0; i < racketSize; i++) //print rackets
