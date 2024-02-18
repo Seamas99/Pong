@@ -39,12 +39,74 @@
             char racket = '|';
             int leftRacketPosition = 0;
             int rightRacketPosition = 0;
+            int ballXCoord = tennisCourtLength / 2;
+            int ballYCoord = tennisCourtWidth / 2;
+            char ball = '°';
             while (true)
             {
                 Console.SetCursorPosition(0, 0); //top outline
                 Console.WriteLine(outline);
                 Console.SetCursorPosition(0, tennisCourtWidth); //bottom outline
                 Console.WriteLine(outline);
+
+                Console.SetCursorPosition(ballXCoord, ballYCoord);
+                Console.WriteLine(ball);
+                bool isBallGoingDown = true;
+                bool isBallGoingRight = true;
+                while (!Console.KeyAvailable)
+                {
+                    for (int i = 0; i < racketSize; i++) //print rackets
+                    {
+                        Console.SetCursorPosition(0, i + 1 + leftRacketPosition); //left racket
+                        Console.WriteLine(racket);
+                        Console.SetCursorPosition(tennisCourtLength - 1, i + 1 + rightRacketPosition); //right racket
+                        Console.WriteLine(racket);
+                    }
+                    Console.SetCursorPosition(ballXCoord, ballYCoord);
+                    Console.WriteLine(ball);
+                    Thread.Sleep(100); //Adds a timer so that the players have time to react
+
+                    Console.SetCursorPosition(ballXCoord, ballYCoord);
+                    Console.WriteLine(" "); //Clears the previous position of the ball
+
+                    //Update ball position
+                    if (isBallGoingDown)
+                    {
+                        ballYCoord++;
+                    }
+                    else
+                    {
+                        ballYCoord--;
+                    }
+                    if (isBallGoingRight)
+                    {
+                        ballXCoord++;
+                    }
+                    else
+                    {
+                        ballXCoord--;
+                    }
+
+                    if(ballYCoord == 1 || ballYCoord == tennisCourtWidth - 1)
+                    {
+                        isBallGoingDown = !isBallGoingDown;
+                    }
+
+                    if (ballXCoord == 1)
+                    {
+                        if ((ballYCoord <= leftRacketPosition + racketSize) && (ballYCoord >= leftRacketPosition + 1))
+                        {
+                            isBallGoingRight = !isBallGoingRight;
+                        }
+                    }
+                    else if (ballXCoord == tennisCourtLength -1)
+                    {
+                        if ((ballYCoord <= rightRacketPosition + racketSize) && (ballYCoord >= rightRacketPosition +1))
+                        {
+                            isBallGoingRight = !isBallGoingRight;
+                        }
+                    }
+                }
 
                 for (int i = 0; i < racketSize; i++) //print rackets
                 {
@@ -98,7 +160,7 @@
                     Console.SetCursorPosition(tennisCourtLength - 1, i);
                     Console.WriteLine(" ");
                 }
-
+                
             }//end of game loop
         }
     }
