@@ -60,6 +60,8 @@
                     if (leftRacketPosition > 0)
                     {
                         leftRacketPosition--;
+                        Console.SetCursorPosition(0, leftRacketPosition + 1);
+                        Console.WriteLine(" ");
                     }
                 } 
                 else if(buttonPressed.Equals(leftDown))
@@ -67,6 +69,8 @@
                     if (leftRacketPosition < tennisCourtWidth - racketSize -1)
                     {
                         leftRacketPosition++;
+                        Console.SetCursorPosition(0, leftRacketPosition - 1);
+                        Console.WriteLine(" ");
                     }
                 }
                 if (buttonPressed.Equals(rightUp))
@@ -74,6 +78,8 @@
                     if (rightRacketPosition > 0)
                     {
                         rightRacketPosition--;
+                        Console.SetCursorPosition(0, rightRacketPosition + 1);
+                        Console.WriteLine(" ");
                     }
                 }
                 else if (buttonPressed.Equals(rightDown))
@@ -81,7 +87,16 @@
                     if (rightRacketPosition < tennisCourtWidth - racketSize - 1)
                     {
                         rightRacketPosition++;
+                        Console.SetCursorPosition(0, rightRacketPosition - 1);
+                        Console.WriteLine(" ");
                     }
+                }
+                for (int i = 1; i < tennisCourtWidth; i++)
+                {
+                    Console.SetCursorPosition(0, i);
+                    Console.WriteLine(" ");
+                    Console.SetCursorPosition(tennisCourtLength - 1, i);
+                    Console.WriteLine(" ");
                 }
 
             }//end of game loop
