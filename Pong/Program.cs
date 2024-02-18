@@ -6,7 +6,13 @@
         {
             Console.ForegroundColor = ConsoleColor.Green;
             const int tennisCourtLength = 50, tennisCourtWidth = 20;
-            PongUtil.chooseControls();
+            char[] keys = PongUtil.chooseControls();
+            char leftUp = keys[0];
+            char leftDown = keys[1];
+            char rightUp = keys[2];
+            char rightDown = keys[3];
+            Console.Clear();
+
             const char courtOutline = '-';
             string outline = string.Concat(Enumerable.Repeat(courtOutline, tennisCourtLength));
 
@@ -29,9 +35,7 @@
                     Console.WriteLine(racket);
                 } // end of racket print loop
 
-                switch(Console.ReadKey().Key) { 
                 
-                }
             }//end of game loop
         }
     }
