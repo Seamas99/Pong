@@ -6,11 +6,30 @@
         {
             Console.ForegroundColor = ConsoleColor.Green;
             const int tennisCourtLength = 50, tennisCourtWidth = 20;
-            char[] keys = PongUtil.chooseControls();
-            ConsoleKey leftUp = (ConsoleKey) keys[0];
-            ConsoleKey leftDown =(ConsoleKey) keys[1];
-            ConsoleKey rightUp = (ConsoleKey) keys[2];
-            ConsoleKey rightDown = (ConsoleKey) keys[3];
+
+            ConsoleKey leftUp;
+            ConsoleKey leftDown;
+            ConsoleKey rightUp;
+            ConsoleKey rightDown;
+            Console.WriteLine("***********\nDefault Keys\n***********\nLeft Player\nUp : W\nDown : S");
+            Console.WriteLine("***********\nRight Player\nUp : Up Arrow\nDown : Down Arrow\n***********\n");
+            Console.WriteLine("Would you like to use the default keys?");
+            if (!PongUtil.confirmOption())
+            {
+                Console.Clear();
+                char[] keys = PongUtil.chooseControls();
+                leftUp = (ConsoleKey)keys[0];
+                leftDown = (ConsoleKey)keys[1];
+                rightUp = (ConsoleKey)keys[2];
+                rightDown = (ConsoleKey)keys[3];
+            }
+            else
+            {
+                leftUp = ConsoleKey.W;
+                leftDown = ConsoleKey.S;
+                rightUp = ConsoleKey.UpArrow;
+                rightDown = ConsoleKey.DownArrow;
+            }
             Console.Clear();
 
             const char courtOutline = '-';
